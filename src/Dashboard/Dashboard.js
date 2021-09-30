@@ -8,6 +8,10 @@ import Link from "@material-ui/core/Link";
 import Chart from "./Chart";
 import TotalCard from "./TotalCard";
 import ExpensesTable from "./ExpensesTable";
+import Cpu from "./Nodes/CPU";
+import Disk from "./Nodes/Disk";
+import Load from "./Nodes/Load";
+import Memory from "./Nodes/Memory";
 import { drawerWidth } from "../AppBarAndDrawer/AppBarAndDrawer";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -66,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     overflow: "auto",
     flexDirection: "column",
+    height: 300,
   },
   fixedHeight: {
     height: 300,
@@ -112,7 +117,33 @@ export function Dashboard() {
     <>
       <SimpleTabs />
       <Content>
+        
+    
         <Grid container spacing={3}>
+
+          <Grid item xs={12} md={7} lg={6}>
+              <Paper className={classes.paper}>
+                <Memory />
+              </Paper>
+          </Grid>
+          <Grid item xs={12} md={7} lg={6}>
+          <Paper className={classes.paper}>
+            <Cpu />
+          </Paper>
+          </Grid>
+
+          <Grid item xs={12} md={7} lg={6}>
+          <Paper className={classes.paper}>
+            <Disk />
+          </Paper>
+       </Grid>
+
+       <Grid item xs={12} md={7} lg={6}>
+          <Paper className={classes.paper}>
+            <Load />
+          </Paper>
+       </Grid>
+          
           <Grid item xs={12} md={7} lg={8}>
             <Paper className={balancePaper}>
               <TotalCard />
@@ -141,6 +172,8 @@ export function Dashboard() {
               <ExpensesTable />
             </Paper>
           </Grid>
+
+          
         </Grid>
         <Box pt={4}>
           <Copyright />
